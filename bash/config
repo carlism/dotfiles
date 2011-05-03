@@ -1,2 +1,43 @@
 export PS1="\w$ "
 export EDITOR="mate_wait"
+export TERM=xterm-color
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export CLICOLOR=1
+export LSCOLORS="HxGxcxdxBxegedabagacad"
+export HISTCONTROL=ignoredups # Ignores dupes in the history
+
+# Mac ._ file weirdness in tar archives
+export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
+export COPYFILE_DISABLE=true
+
+# RMU Stuff
+export MOMENT_API_KEY=hreEkh7UkPLRH51tFxNG
+export BOXCAR_API_KEY=COpbVp5h3379qoq2pdIT
+
+###########
+# CLOJURE #
+###########
+#export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
+
+bind 'set match-hidden-files off'
+
+# bash completion settings (actually, these are readline settings)
+bind "set completion-ignore-case on" # note: bind is used instead of setting these in .inputrc.  This ignores case in bash completion
+bind "set bell-style none" # No bell, because it's damn annoying
+bind "set show-all-if-ambiguous On" # this allows you to automatically show completion without double tab-ing
+
+# After each command, checks the windows size and changes lines and columns
+shopt -s checkwinsize 
+
+# Turn on advanced bash completion if the file exists (get it here: http://www.caliban.org/bash/index.shtml#completion)
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
+fi
+
+# Autojump stuff
+if [ -f `brew --prefix`/etc/autojump ]; then
+  . `brew --prefix`/etc/autojump
+fi
+
+#this must remain at the end
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
