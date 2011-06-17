@@ -1,5 +1,5 @@
 export PS1="\w$ "
-export EDITOR="mate_wait"
+export EDITOR="vi"
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1
@@ -10,14 +10,11 @@ export HISTCONTROL=ignoredups # Ignores dupes in the history
 export COPY_EXTENDED_ATTRIBUTES_DISABLE=true
 export COPYFILE_DISABLE=true
 
+export MAVEN_OPTS="-Xmx512m"
+
 # RMU Stuff
 export MOMENT_API_KEY=hreEkh7UkPLRH51tFxNG
 export BOXCAR_API_KEY=COpbVp5h3379qoq2pdIT
-
-###########
-# CLOJURE #
-###########
-#export CLASSPATH=$CLASSPATH:/usr/local/Cellar/clojure-contrib/1.2.0/clojure-contrib.jar
 
 bind 'set match-hidden-files off'
 
@@ -33,6 +30,16 @@ shopt -s checkwinsize
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
+
+function prompt {
+  local WHITE="\[\033[1;37m\]"
+  local GREEN="\[\033[0;32m\]"
+  local CYAN="\[\033[0;36m\]"
+  local GRAY="\[\033[0;37m\]"
+  local BLUE="\[\033[0;34m\]"
+  export PS1="${GREEN}\u${CYAN}@${GREEN}\h ${WHITE}\w${CYAN}"' $(__git_ps1 "(%s)") '"${GRAY}"
+}
+prompt
 
 # Autojump stuff
 if [ -f `brew --prefix`/etc/autojump ]; then
